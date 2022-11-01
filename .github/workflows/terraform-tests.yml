@@ -71,13 +71,13 @@ jobs:
         path: './terraform-provider-aws'
 
     - name: Set up Python 3.10.5
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10.5'
 
     - name: Cache Python .venv
       id: python-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ./.venv/
         key: ${{ runner.os }}-venv-${{ hashFiles('**/setup.cfg') }}
@@ -108,7 +108,7 @@ jobs:
         git apply ../etc/tf-patch/0001-endpoints.patch
 
     - name: Cache Go dependencies
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           ~/go/pkg/mod
